@@ -20,7 +20,7 @@ gem "multi_xml"
 gem "libxml-ruby"
 
 # see app/model/sources/number/jenkins_game.rb
-gem "nokogiri"
+gem "nokogiri", "~> 1.6.6.2"
 
 # see app/model/sources/number/new_relic.rb
 gem "newrelic_api"
