@@ -1,0 +1,7 @@
+deploy_directory: /var/www/team_dashboard
+webserver_name: team-dashboard.cloudapp.net
+db_user: root
+db_password: mugenup0614
+db_name: team_dashboard_staging
+repo: git@github.com:tetuyoko/team_dashboard.git
+ruby_ver: 2.0.0p247

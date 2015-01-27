@@ -1,0 +1,18 @@
+---
+- name: install mysql
+  yum: name={{item}}
+  with_items:
+    - mariadb-server
+    - mariadb-devel
+
+#- name: copy my.conf file
+#  template: src=my.cnf.j2 dest=/etc/mysql/my.cnf
+
+#- name: start mysql
+# action: service name=mysql state=started enabled=yes
+
+- name: create station_staging database
+  mysql_db: name={{ db_name }} state=present encoding=utf8
+
+- name: create user
+  mysql_user: host=localhost name={{ db_user  }} password={{ dbpassword }} priv={{ db_name }}.*:ALL

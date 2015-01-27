@@ -1,0 +1,22 @@
+## rvm, どう転んでもうまく入らないので
+# 手動でやる
+
+---
+- name: Install Station
+  hosts: all
+  user: azureuser
+  sudo: yes
+  vars_files:
+    - vars/defaults.yml
+  roles:
+    - database
+    - webserver
+    - redis
+  vars_prompt:
+    - name: "dbpassword"
+      prompt: "Please enter dbpassword"
+      private: no
+
+#  handlers:
+#    - name: Restart unicorn
+#      action: service name=unicorn state=restarted

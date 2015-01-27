@@ -1,0 +1,19 @@
+- name: Install nginx
+  yum: name=nginx
+
+- name: Remove the default app
+  command: rm -rf /etc/nginx/conf.d/default.conf
+
+- name: Remove the app's symlink, if exists
+  command: rm -rf /etc/nginx/conf.d/team-dashboard
+
+- name: Configure nginx for the app
+  template: src=etc_nginx_sites-available_team-dashboard.conf.j2 dest=/etc/nginx/conf.d/team-dashboard group=root owner=root force=yes
+
+- name: Restart nginx
+  command: sudo systemctl start nginx.service
+
+#
+#- name: Enable the app
+#  command: ln -s /etc/nginx/conf.d/team-dashboard /etc/nginx/conf.d/team-dashboard
+

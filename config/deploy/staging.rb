@@ -11,7 +11,6 @@ role :app, %w{azureuser@104.41.162.18}
 role :web, %w{azureuser@104.41.162.18}
 role :db,  %w{azureuser@104.41.162.18}
 
-
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server definition into the
@@ -19,7 +18,6 @@ role :db,  %w{azureuser@104.41.162.18}
 # used to set extended properties on the server.
 
 server '104.41.162.18', user: 'azureuser', roles: %w{web app}
-
 
 # Custom SSH Options
 # ==================

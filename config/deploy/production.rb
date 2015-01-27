@@ -30,7 +30,7 @@ server '104.41.162.18', user: 'azureuser', roles: %w{web app}
 # --------------
 set :ssh_options, {
   keys: %w(~/.ssh/azure/azure_staging.key),
-  forward_agent: true,
+  #forward_agent: true,
   auth_methods: %w(publickey)
 }
 #

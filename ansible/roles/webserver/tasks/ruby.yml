@@ -1,0 +1,53 @@
+---
+# Ruby from source playbook (https://github.com/jgrowl/ansible-playbook-ruby-from-src)
+- name: yum package upgrade
+  yum: name="{{ item }}"
+  with_items:
+    - autoconf
+    - "@Development Tools"
+
+- name: Install yum Ruby dependencies
+  yum: name={{ item }}
+  with_items:
+    - readline-devel
+    - openssl-devel
+    - libyaml-devel
+    - zlib-devel
+    - git
+    - libxml2-devel
+    - wget
+    - sqlite
+    - sqlite-devel
+    - httpd-devel
+    - curl-devel
+    - apr-devel
+    - apr-util-devel
+    - libffi-devel
+    - wget
+
+- name: Download rbenv
+  git: repo=https://github.com/sstephenson/rbenv.git dest=~/.rbenv
+
+- name: rbenv echo
+  shell: echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+
+- name: rbenv echo
+  shell: echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+
+- name: Download ruby-build
+  git: repo=https://github.com/sstephenson/ruby-build.git dest=~/.rbenv/plugins/ruby-build
+
+- name: Install ruby-build
+  shell: /bin/bash -c "export PREFIX=~/local/src/ &&  ~/.rbenv/plugins/ruby-build/install.sh" chdir=~/.rbenv/plugins/ruby-build
+
+# パッチ必要
+- name: Install Ruby
+  shell: MAKE_OPTS="-j 4" rbenv install {{ ruby_ver }} -f -k
+
+- name: rbenv global 
+  shell: rbenv global {{ ruby_ver }}
+  notify: rehash
+
+- name: gem install
+  shell: rbenv exec gem install bundler --no-ri --no-rdoc
+  notify: rehash

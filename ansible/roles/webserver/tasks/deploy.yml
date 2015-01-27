@@ -1,0 +1,11 @@
+- name: Make shared directories
+  file: path={{deploy_directory}}/shared/{{item}} group=azureuser owner=azureuser state=directory
+  with_items:
+    - uploads
+    - system
+
+#- name: check REVISION
+- shell: cat {{deploy_directory}}/current/REVISION
+  register: result
+
+- debug: var=result.stdout

@@ -4,7 +4,7 @@ require 'capistrano/deploy'
 require 'capistrano/rails'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
-require 'rvm1/capistrano3'
+require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano3/unicorn'
 
