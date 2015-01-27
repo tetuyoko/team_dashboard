@@ -45,6 +45,12 @@ group :development do
   gem "bullet"
   gem "thin"
   gem "pry-rails"
+
+  gem 'capistrano', '~> 3.2.1'
+  gem 'capistrano-rails'
+  gem 'rvm1-capistrano3', require: false
+  gem 'capistrano-bundler'
+  gem 'capistrano3-unicorn'
 end
 
 ruby "2.0.0"
