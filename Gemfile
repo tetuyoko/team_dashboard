@@ -37,6 +37,11 @@ group :test, :development do
   gem "mocha", :require => false
 end
 
+group :production do
+  gem 'rails_12factor' # remove if not deploying on heroku
+  gem "activerecord-postgresql-adapter"
+end
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
