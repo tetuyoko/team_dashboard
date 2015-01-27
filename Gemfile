@@ -26,7 +26,8 @@ gem "nokogiri"
 gem "newrelic_api"
 
 # assets
-gem "therubyracer"
+gem "therubyracer", "0.12.1"
+#  #gem "libv8", "3.16.14.0"
 gem "uglifier"
 
 group :test, :development do
@@ -40,10 +41,10 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "foreman"
-end
-
-group :production do
-  gem 'rails_12factor' # remove if not deploying on heroku
+  gem "spring"
+  gem "bullet"
+  gem "thin"
+  gem "pry-rails"
 end
 
 ruby "2.0.0"
